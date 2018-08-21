@@ -10,10 +10,7 @@
 <body>
     @include('navbar')
     <div class="container">
-        @yield('section')
-        <h1>Teste</h1>
-        <h1>Teste</h1>
-        <h1>Teste</h1>
+        @yield('contents')
     </div>
     @include('footer')
 </body>
