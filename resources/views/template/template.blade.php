@@ -11,9 +11,7 @@
 </head>
 <body>
     @include('navbar')
-    <div class="container">
-        @yield('contents')
-    </div>
+        @yield('contents')  
     @include('footer')
 </body>
 </html>
