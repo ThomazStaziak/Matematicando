@@ -19,20 +19,22 @@ class ScoresController extends Controller
           $numero1 = rand(0, 20);
           $numero2 = rand(0, 20);
           $array[] = [
-            'questao ' . $i => $numero1 . ' + ' . $numero2,
-            'resposta ' . $i => $numero1 + $numero1
+            'questao' => $numero1 . ' + ' . $numero2,
+            'resposta' => $numero1 + $numero1
           ];
         } else {
           $numero1 = rand(0, 20);
           $numero2 = rand(0, 20);
           $array[] = [
-            'questao ' . $i => $numero1 . ' - ' . $numero2,
-            'resposta ' . $i => $numero1 - $numero1
+            'questao' => $numero1 . ' - ' . $numero2,
+            'resposta' => $numero1 - $numero1
           ];
         }
       }
 
-      var_dump($array);
+      //var_dump($array);
+
+      return view('game', ['array' => $array]);
 
     }
 }
