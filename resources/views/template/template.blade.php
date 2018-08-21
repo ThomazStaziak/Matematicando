@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{$title or 'Matematicando - Jogo de Inteligência'}}</title>
     <link rel="stylesheet" href="{{ url('css/materialize.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body>
     @include('navbar')
@@ -13,7 +15,7 @@
         @yield('section')
         <h1>Teste</h1>
         <h1>Teste</h1>
-        <h1>Teste</h1>
+         <h1>Teste</h1>
     </div>
     @include('footer')
 </body>
