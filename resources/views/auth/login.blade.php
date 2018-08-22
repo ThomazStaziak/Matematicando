@@ -74,16 +74,17 @@
   <div class="collapsible-header center">Login</div>
   <div class="row">
       <br>
-      <form class="col s12">
+      <form class="col s12" method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+        @csrf
         <div class="row">
           <div class="input-field col s6">
             <i class="material-icons prefix active">account_circle</i>
-            <input id="icon_prefix" type="text" class="validate">
+            <input id="icon_prefix" type="email" name="email" value="{{ old('email') }}" class="validate">
             <label for="icon_prefix" class="active">Email</label>
           </div>
           <div class="input-field col s6">
             <i class="material-icons prefix active">lock</i>
-            <input id="icon_lock" type="password" class="validate">
+            <input id="icon_lock" type="password" name="password" value="{{ old('password') }}" class="validate">
             <label for="icon_lock" class="active">Password</label>
           </div>
           <div class="input-field col s12 center">
@@ -94,5 +95,10 @@
         </div>
       </form>
     </div>
+    @if ($errors->has('password'))
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('password') }}</strong>
+        </span>
+    @endif
 </div>
 @endsection

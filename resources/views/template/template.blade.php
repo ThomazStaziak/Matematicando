@@ -11,7 +11,8 @@
 </head>
 <body>
     @include('navbar')
-        @yield('contents')  
+        @yield('contents')
     @include('footer')
+    <script src="{{ url('js/main.js') }}"></script>
 </body>
 </html>
