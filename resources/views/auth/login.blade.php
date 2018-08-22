@@ -52,22 +52,22 @@
         <div class="row"><br>
           <div class="input-field col s6">
             <i class="material-icons prefix">account_circle</i>
-            <input id="nome" type="text" class="validate">
+            <input id="nome" type="text" class="validate" name="name" value="{{ old('name') }}" required>
             <label for="nome">Nome</label>
           </div>
           <div class="input-field col s6">
             <i class="material-icons prefix">email</i>
-            <input id="email" type="text" class="validate">
+            <input id="email" type="text" class="validate" name="email" value="{{ old('email') }}" required>
             <label for="email">Email</label>
           </div>
           <div class="input-field col s6">
             <i class="material-icons prefix">lock</i>
-            <input id="senha" type="text" class="validate">
+            <input id="senha" type="password" class="validate" name="password" required>
             <label for="senha">Senha</label>
           </div>
           <div class="input-field col s6">
             <i class="material-icons prefix">lock_open</i>
-            <input id="senha_confirm" type="text" class="validate">
+            <input id="senha_confirm" type="password" class="validate" name="password_confirmation" required>
             <label for="senha_confirm">Confirmar Senha</label>
           </div>
           <div class="input-field col s12 right">

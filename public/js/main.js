@@ -13,15 +13,18 @@ function plugHtml(id, algo) {
 }
 
 function mostrarPergunta() {
-  plugHtml("pergunta", array[counter]['questao']);
+  plugHtml('pergunta', array[counter]['questao']);
   counter++
-  // plugHtml("pergunta", "Acabou!");
 }
 
 function cronometro(segundos) {
   let novo = segundos
   const interval = setInterval(() => {
-    plugHtml("tempo", segundos)
+    if (segundos < 10) {
+      plugHtml('tempo', "00:0" + segundos)
+    } else {
+      plugHtml('tempo', "00:" + segundos)
+    }
     if (segundos <= 0) {
       clearInterval(interval)
       mostrarPergunta()
@@ -32,4 +35,4 @@ function cronometro(segundos) {
 }
 
 mostrarPergunta()
-cronometro(3)
+cronometro(10)

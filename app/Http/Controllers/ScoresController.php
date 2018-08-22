@@ -15,7 +15,7 @@ class ScoresController extends Controller
     {
       $array = [];
       for ($i=1; $i <= 5 ; $i++) {
-        if ($i < 3) {
+        if ($i <= 3) {
           $numero1 = rand(0, 20);
           $numero2 = rand(0, 20);
           $array[] = [
@@ -31,8 +31,7 @@ class ScoresController extends Controller
           ];
         }
       }
-
-      //var_dump($array);
+      $array[] = ['questao' => 'Acabou!'];
 
       return view('game', ['array' => $array]);
 
