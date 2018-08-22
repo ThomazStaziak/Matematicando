@@ -7,6 +7,7 @@
     <title>{{$title or 'Matematicando - Jogo de Inteligência'}}</title>
     <link rel="stylesheet" href="{{ url('css/materialize.css') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
     <link rel="stylesheet" href="{{ url('css/main.css') }}">
     <script src="{{ url('js/materialize.js') }}"></script>
 </head>
