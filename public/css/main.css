@@ -27,8 +27,5 @@ body {
 
 .timer {
   font-family: 'Audiowide', cursive;
-}
-
-.game {
-
+  margin-left: 7px;
 }

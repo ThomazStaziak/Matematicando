@@ -36,3 +36,5 @@ function cronometro(segundos) {
 
 mostrarPergunta()
 cronometro(10)
+
+let teste = "Foi retardado"
