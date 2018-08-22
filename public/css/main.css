@@ -13,3 +13,14 @@ body {
 .content {
   background-color: lightgrey;
 }
+
+.login {
+  height: 50vh;
+  background: grey;
+  border-right: solid 1px #000;
+}
+
+.register {
+  height: 50vh;
+  background: lightgrey;
+}

@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="{{ url('css/materialize.css') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{{ url('css/main.css') }}">
+    <script src="{{ url('js/materialize.js') }}"></script>
 </head>
 <body>
-    @include('navbar')
-        @yield('contents')
-    @include('footer')
+    @include('template.navbar')
+      @yield('contents')
+    @include('template.footer')
     <script src="{{ url('js/main.js') }}"></script>
 </body>
 </html>
