@@ -1,5 +1,6 @@
 const form = document.querySelector('#form')
 const input = document.querySelector('#numero')
+const background = document.body;
 let counter = 0
 
 input.addEventListener('keypress', (evento) => {
@@ -7,6 +8,15 @@ input.addEventListener('keypress', (evento) => {
     form.submit()
   }
 })
+
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (let i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
 
 function plugHtml(id, algo) {
   document.getElementById(id).innerHTML = algo;
@@ -20,21 +30,40 @@ function mostrarPergunta() {
 function cronometro(segundos) {
   let novo = segundos
   const interval = setInterval(() => {
-    if (segundos < 10) {
-      plugHtml('tempo', "00:0" + segundos)
+    if (segundos < 10 && segundos >= 0) {
+      plugHtml('tempo', '00:0' + segundos)
     } else {
-      plugHtml('tempo', "00:" + segundos)
+      plugHtml('tempo', '00:' + segundos)
     }
     if (segundos <= 0) {
+      piscarTela('red')
       clearInterval(interval)
       mostrarPergunta()
+      piscarTela('white')
       cronometro(novo)
     }
     segundos--
   }, 1000)
 }
 
-mostrarPergunta()
-cronometro(10)
+function piscarTela(cor) {
+  background.style.backgroundColor = cor
+}
 
-let teste = "Foi retardado"
+// function cronometro(segundos) {
+//   let novo = segundos
+//   const interval = setInterval(() => {
+//     if (segundos < 10) {
+//       plugHtml('tempo', "00:0" + segundos)
+//     } else {
+//       plugHtml('tempo', "00:" + segundos)
+//     }
+//     if (segundos <= 0) {
+//       clearInterval(interval)
+//     }
+//     segundos--
+//   }, 1000)
+// }
+
+mostrarPergunta()
+cronometro(5)
