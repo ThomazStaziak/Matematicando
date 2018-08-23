@@ -3,11 +3,7 @@ const input = document.querySelector('#numero')
 const background = document.body;
 let counter = 0
 
-input.addEventListener('keypress', (evento) => {
-  if (evento.charCode === 13) {
-    form.submit()
-  }
-})
+
 
 function sleep(milliseconds) {
   var start = new Date().getTime();
@@ -36,10 +32,12 @@ function cronometro(segundos) {
       plugHtml('tempo', '00:' + segundos)
     }
     if (segundos <= 0) {
+     // console.log('teste');
+      
       piscarTela('red')
       clearInterval(interval)
       mostrarPergunta()
-      piscarTela('white')
+      setTimeout(() => { piscarTela('white');},800)
       cronometro(novo)
     }
     segundos--
@@ -50,6 +48,28 @@ function piscarTela(cor) {
   background.style.backgroundColor = cor
 }
 
+input.addEventListener('keypress', (evento) => {
+  if (evento.charCode === 13) {
+
+    let resposta_certa = array[counter-1]['resposta'];
+    let resposta = evento.srcElement.value;
+    
+    if(resposta == resposta_certa){
+      piscarTela('green')
+      setTimeout(() => { piscarTela('white'),mostrarPergunta()},800)
+      evento.srcElement.value = ""
+      cronometro(novo)
+    }else {
+      piscarTela('red')
+      clearInterval(interval)
+      mostrarPergunta()
+      setTimeout(() => { piscarTela('white');},800)
+      cronometro(novo)
+    }
+    
+    
+  }
+})
 // function cronometro(segundos) {
 //   let novo = segundos
 //   const interval = setInterval(() => {
@@ -66,4 +86,4 @@ function piscarTela(cor) {
 // }
 
 mostrarPergunta()
-cronometro(5)
+cronometro(15)
