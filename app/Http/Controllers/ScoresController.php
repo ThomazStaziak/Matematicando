@@ -20,14 +20,14 @@ class ScoresController extends Controller
           $numero2 = rand(0, 20);
           $array[] = [
             'questao' => $numero1 . ' + ' . $numero2,
-            'resposta' => $numero1 + $numero1
+            'resposta' => $numero1 + $numero2
           ];
         } else {
           $numero1 = rand(0, 20);
           $numero2 = rand(0, 20);
           $array[] = [
             'questao' => $numero1 . ' - ' . $numero2,
-            'resposta' => $numero1 - $numero1
+            'resposta' => $numero1 - $numero2
           ];
         }
       }
