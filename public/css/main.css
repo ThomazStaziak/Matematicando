@@ -25,7 +25,11 @@ body {
   background: lightgrey;
 }
 
-.timer {
+.numero {
   font-family: 'Audiowide', cursive;
   margin-left: 7px;
+}
+
+input {
+  font-family: 'Audiowide', cursive;
 }
