@@ -13,7 +13,7 @@
                   <h1 id="pergunta" class="numero"></h1>
                   <div class="col s2 offset-s5">
                     <input type="hidden" name="" value="">
-                    <input type="text" class="respostas center-align" name="numero" id="numero">
+                    <input type="text" class="respostas center-align" name="numero" id="numero" autofocus>
                   </div>
                 </div>
                 <div class="col s3 center-align">

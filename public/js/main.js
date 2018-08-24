@@ -4,6 +4,7 @@ const background = document.body
 const time = 40
 let counter = 0
 let tempoResposta = 0
+let tempoRestante = 0
 let quantidadeCertas = 0
 let quantidadeErradas = 0
 let pontuacao = 0
@@ -30,9 +31,13 @@ function piscarTela(cor) {
   background.style.backgroundColor = cor
 }
 
-function cronometro(segundos, parar) {
+function cronometro(segundos) {
   const interval = setInterval(() => {
-    if (segundos < 10 && !parar) {
+    if (counter >= 5) {
+      tempoRestante = segundos
+      clearInterval(interval)
+    }
+    if (segundos < 10) {
       tempoResposta = segundos
       plugHtml('pontuacao', pontuacao)
       plugHtml('tempo', '00:0' + segundos)
@@ -41,8 +46,7 @@ function cronometro(segundos, parar) {
       plugHtml('pontuacao', pontuacao)
       plugHtml('tempo', '00:' + segundos)
     }
-    if (segundos <= 0 || parar) {
-      piscarTela('red')
+    if (segundos <= 0) {
       plugHtml('pergunta', array[5]['questao'])
       clearInterval(interval)
     }
@@ -51,18 +55,30 @@ function cronometro(segundos, parar) {
 }
 input.addEventListener('keypress', (evento) => {
   if (evento.charCode === 13) {
+    if (counter > 5) {
+      piscarTela('purple')
+      plugHtml('pontuacao', array[5]['questao'])
+    }
     let resposta_certa = array[counter - 1]['resposta'];
     let resposta = evento.srcElement.value;
     evento.srcElement.value = ""
     if(resposta == resposta_certa){
-      if (tempoResposta >= 30) {
-        pontuacao += 1000
+      if (tempoResposta >= 35) {
+        pontuacao += 2000
+      } else if (tempoResposta >= 30) {
+        pontuacao += 1800
+      } else if (tempoResposta >= 25) {
+        pontuacao += 1600
       } else if (tempoResposta >= 20) {
-        pontuacao += 800
+        pontuacao += 1400
+      } else if (tempoResposta >= 15) {
+        pontuacao += 1200
       } else if (tempoResposta >= 10) {
+        pontuacao += 1000
+      } else if (tempoResposta >= 5) {
+        pontuacao += 800
+      } else if (tempoResposta < 5) {
         pontuacao += 600
-      } else if (tempoResposta < 10) {
-        pontuacao += 400
       }
       piscarTela('green')
       setTimeout(() => {
@@ -83,4 +99,4 @@ input.addEventListener('keypress', (evento) => {
 })
 
 mostrarPergunta()
-cronometro(time, false)
+cronometro(time)
