@@ -10,17 +10,38 @@ class ScoresController extends Controller
     {
       $this->middleware('auth');
     }
-
+    public function gerarCalcular($operador, $nivel){
+      $numero1 = rand(1, 10);
+      $numero2 = rand(1, 10);
+      switch ($operador) {
+        case 'x':
+           $conta = $numero1 * $numero2;   
+          break;
+        case ':':
+           $aux = $numero1;
+           $numero1 = $numero1*$numero2;
+           break;
+        case '+':
+           $conta = $numero1 * $numero2;
+            break;
+        case '-':
+           $conta = $numero1 * $numero2;
+          break;    
+      }
+      return [$numero1, $numero2, $conta];
+    }
     public function easy()
     {
       $array = [];
+      $operadoresV = ['+','-','x',':'];
       for ($i=1; $i <= 5 ; $i++) {
+        $num = rand(0,3);
+        $operador = $operadoresV[$num];
         if ($i <= 3) {
-          $numero1 = rand(0, 20);
-          $numero2 = rand(0, 20);
+          $aux = $this->gerarCalcular($operador);
           $array[] = [
-            'questao' => $numero1 . ' + ' . $numero2,
-            'resposta' => $numero1 + $numero2
+            'questao' => $aux[0]."$operador" . $aux[1],
+            'resposta' => $aux[2]
           ];
         } else {
           $numero1 = rand(0, 20);
@@ -32,7 +53,6 @@ class ScoresController extends Controller
         }
       }
       $array[] = ['questao' => 'Acabou!'];
-
       return view('game', ['array' => $array]);
 
     }
