@@ -10,7 +10,7 @@ class ScoresController extends Controller
     {
       $this->middleware('auth');
     }
-    public function gerarCalcular($operador, $nivel){
+    public function gerarCalcular($operador){
       $numero1 = rand(1, 10);
       $numero2 = rand(1, 10);
       switch ($operador) {
