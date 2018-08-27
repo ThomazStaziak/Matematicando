@@ -1,12 +1,12 @@
 const form = document.querySelector('#form')
+const logout = document.querySelector('#logout')
 const input = document.querySelector('#numero')
 const background = document.body
-const time = 40
+const finalArray = array.length
+const time = 60
 let counter = 0
 let tempoResposta = 0
 let tempoRestante = 0
-let quantidadeCertas = 0
-let quantidadeErradas = 0
 let pontuacao = 0
 
 function sleep(milliseconds) {
@@ -33,9 +33,14 @@ function piscarTela(cor) {
 
 function cronometro(segundos) {
   const interval = setInterval(() => {
-    if (counter >= 5) {
+    if (counter >= finalArray) {
       tempoRestante = segundos
       clearInterval(interval)
+    }
+    if (segundos >= 60) {
+      tempoResposta = segundos
+      plugHtml('pontuacao', pontuacao)
+      plugHtml('tempo', '01:00')
     }
     if (segundos < 10) {
       tempoResposta = segundos
@@ -47,7 +52,7 @@ function cronometro(segundos) {
       plugHtml('tempo', '00:' + segundos)
     }
     if (segundos <= 0) {
-      plugHtml('pergunta', array[5]['questao'])
+      plugHtml('pergunta', array[finalArray]['questao'])
       clearInterval(interval)
     }
     segundos--
@@ -55,43 +60,22 @@ function cronometro(segundos) {
 }
 input.addEventListener('keypress', (evento) => {
   if (evento.charCode === 13) {
-    if (counter > 5) {
-      piscarTela('purple')
-      plugHtml('pontuacao', array[5]['questao'])
-    }
     let resposta_certa = array[counter - 1]['resposta'];
     let resposta = evento.srcElement.value;
     evento.srcElement.value = ""
     if(resposta == resposta_certa){
-      if (tempoResposta >= 35) {
-        pontuacao += 2000
-      } else if (tempoResposta >= 30) {
-        pontuacao += 1800
-      } else if (tempoResposta >= 25) {
-        pontuacao += 1600
-      } else if (tempoResposta >= 20) {
-        pontuacao += 1400
-      } else if (tempoResposta >= 15) {
-        pontuacao += 1200
-      } else if (tempoResposta >= 10) {
-        pontuacao += 1000
-      } else if (tempoResposta >= 5) {
-        pontuacao += 800
-      } else if (tempoResposta < 5) {
-        pontuacao += 600
-      }
+      pontuacao += tempoResposta * 100
       piscarTela('green')
       setTimeout(() => {
         piscarTela('white')
         mostrarPergunta()
         plugHtml('pontuacao', pontuacao)
       }, 400)
-    } else {
-      pontuacao -= 300
+    } else if (resposta ) {
+      pontuacao -= 2500
       piscarTela('red')
       setTimeout(() => {
         piscarTela('white')
-        mostrarPergunta()
         plugHtml('pontuacao', pontuacao)
       }, 400)
     }
@@ -100,3 +84,8 @@ input.addEventListener('keypress', (evento) => {
 
 mostrarPergunta()
 cronometro(time)
+
+// IDEA: Mostrar as respostas erradas
+// IDEA: Quando terminar o tempo mostrar um modal com as seguintes opções:
+// Ir para próxima fase, ver erros, sair e "compartilhar"
+// IDEA: Colocar som para erros e para acertos
