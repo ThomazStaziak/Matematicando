@@ -10,16 +10,20 @@ class ScoresController extends Controller
     {
       $this->middleware('auth');
     }
-    public function gerarCalcular($operador){
-      $numero1 = rand(1, 10);
-      $numero2 = rand(1, 10);
+
+    public function gerarCalculo($operador, $inicio, $fim){
+      $numero1 = rand($inicio, $fim);
+      $numero2 = rand($inicio, $fim);
       switch ($operador) {
         case 'x':
-           $conta = $numero1 * $numero2;
-          break;
+          $conta = $numero1 * $numero2;
+        break;
         case ':':
-           $conta = $numero1;
-           $numero1 = $numero1*$numero2;
+           while($numero1 % $numero2 != 0) {
+            $numero1 = rand($inicio, $fim);
+            $numero2 = rand($inicio, $fim);
+           }
+           $conta = $numero1 / $numero2;
            break;
         case '+':
            $conta = $numero1 + $numero2;
@@ -34,10 +38,10 @@ class ScoresController extends Controller
     {
       $array = [];
       $operadoresV = ['+','-','x',':'];
-      for ($i=1; $i <= 5 ; $i++) {
+      for ($i=1; $i <= 10 ; $i++) {
         $num = rand(0,3);
         $operador = $operadoresV[$num];
-          $aux = $this->gerarCalcular($operador);
+          $aux = $this->gerarCalculo($operador, 1, 10);
           $array[] = [
             'questao' => $aux[0]."$operador" . $aux[1],
             'resposta' => $aux[2]
