@@ -20,3 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/easy', 'ScoresController@easy');
+
+Route::get('/comoJogar', function(){
+  return view('como');
+});
