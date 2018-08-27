@@ -49,7 +49,7 @@
   left: 15px;
 }
 
-.dropdown-content.active {
+.dropdown-content.active, .dropdown-content {
   position: absolute;
   top: 15px !important;
   left: 15px !important;
