@@ -3,8 +3,6 @@
     <div class="nav-wrapper">
 
       <a href="{{ url('/') }}" class="brand-logo center fonte-logo">Matematicando</a>
-
-      <a href="{{ url('/') }}" class="brand-logo center">Matematicando</a>
       <ul class="left hide-on-med-and-down">
         @guest
           <li><a href="{{ route('login') }}">Login</a></li>
