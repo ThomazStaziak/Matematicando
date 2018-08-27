@@ -54,3 +54,15 @@
   top: 15px !important;
   left: 15px !important;
 }
+
+@font-face {
+  font-family: 'DatBox';
+  src: url('../font/transfonter.org-20180824-194508/DatBox.woff2') format('woff2'),
+      url('../font/transfonter.org-20180824-194508/DatBox.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.fonte-logo {
+  font-family: 'DatBox';
+}

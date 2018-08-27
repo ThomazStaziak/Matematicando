@@ -1,5 +1,9 @@
-<nav>
+<nav class="purple lighten-1
+">
     <div class="nav-wrapper">
+
+      <a href="{{ url('/') }}" class="brand-logo center fonte-logo">Matematicando</a>
+
       <a href="{{ url('/') }}" class="brand-logo center">Matematicando</a>
       <ul class="left hide-on-med-and-down">
         @guest
@@ -19,6 +23,7 @@
           </ul>
         @endguest
       </ul>
+
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         @guest
           <li><a href="{{ url('login') }}">Jogar</a></li>
