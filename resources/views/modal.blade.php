@@ -12,11 +12,9 @@
 
   <!-- Modal Structure -->
   <div id="demo-modal" class="modal">
-    <div class="modal-content">
-      <h2 align="center">Acabou!</h2>
-      <br>
-      <h1 align="center">Imagem</h1>
-      <h4 align="center">Sua pontuação foi de: 10000</h4>
+    <div class="modal-content center-align">
+      <img align="center" src="{{url('img/calculadoraFeliz.png')}}" id="img-teste" class="calc" alt=""  >
+      <h4 align="center">Sua pontuação foi de: <span id="result"></span></h4>
       <h4 align="center">O Quer Fazer Agora?</h4>
     </div>
     <div class="modal-footer">
@@ -37,13 +35,33 @@
     </div>
   </div>
 </div>
+<audio id="correct-song">
+   <source src="{{url('audio/sucess-song.mp3')}}" type="audio/mp3">
+</audio>
+<audio id="error-song">
+    <source src="{{url('audio/error-song.mp3')}}" type="audio/mp3">
+ </audio>
 <script type="text/javascript">
 	$('.modal').modal({
     dismissible: false
 	});
     $(window).on('load',function(){
         $('#demo-modal').modal('open');
+        var error = document.getElementById("error-song");
+        var sucess = document.getElementById("correct-song");
+
+        var y= sessionStorage.status;
+        var audio = y.split('?');
+        if(audio[1] == 'looser'){
+          error.play();
+        }else {
+          sucess.play();
+        }
     });
+    
+    
+    document.getElementById("result").innerHTML = sessionStorage.pontuacao;
+    document.getElementById("img-teste").src= sessionStorage.status;
 </script>
 </body>
 </html>
