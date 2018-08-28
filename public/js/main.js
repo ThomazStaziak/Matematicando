@@ -8,6 +8,8 @@ let counter = 0
 let tempoResposta = 0
 let tempoRestante = 0
 let pontuacao = 0
+let status = ''
+let audio = ''
 
 function sleep(milliseconds) {
   var start = new Date().getTime()
@@ -31,11 +33,31 @@ function piscarTela(cor) {
   background.style.backgroundColor = cor
 }
 
+function statusPontuacao(){
+    if( pontuacao <= 20000){
+      status = '/img/calculadoraTriste.png?looser';
+      audio  = 'looser';
+    }else if (pontuacao <= 30000){
+      status = 'medio';
+    }else if(pontuacao <= 45000) {
+      status =  '/img/calculadoraFeliz.png?win';
+      audio = 'win'
+    }
+  return status;
+}
+
 function cronometro(segundos) {
   const interval = setInterval(() => {
     if (counter >= finalArray) {
       tempoRestante = segundos
       clearInterval(interval)
+      if (typeof(Storage) !== "undefined") {
+        // Code for localStorage/sessionStorage.
+        sessionStorage.pontuacao = pontuacao;
+        sessionStorage.status = statusPontuacao();
+      } else {
+        // Sorry! No Web Storage support..
+    }
       location='modal'
     }
     if (segundos < 10) {
@@ -48,8 +70,15 @@ function cronometro(segundos) {
       plugHtml('tempo', '00:' + segundos)
     }
     if (segundos <= 0) {
-      plugHtml('pergunta', array[finalArray]['questao'])
       clearInterval(interval)
+      if (typeof(Storage) !== "undefined") {
+        // Code for localStorage/sessionStorage.
+        sessionStorage.pontuacao = pontuacao;
+        sessionStorage.status = statusPontuacao();
+    } else {
+        // Sorry! No Web Storage support..
+    }
+      location='modal'
     }
     segundos--
   }, 1000)
