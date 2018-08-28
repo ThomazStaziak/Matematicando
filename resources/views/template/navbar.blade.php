@@ -10,10 +10,10 @@
           <li><a class="botao btn dropdown-button" href="#" data-activates="dropdown"><span class="teste">Meu Perfil</span><span class="arrow material-icons">arrow_drop_down</span> </a></li>
             <ul id="dropdown" class="dropdown-content">
               <li>
-                <a href="{{ url('home') }}">{{ Auth::user()->name }}</a>
+                <a href="{{ url('home') }}" align="center">Olá {{ Auth::user()->name }}!</a>
               </li>
               <li>
-                <a href="#" onClick="document.getElementById('form1').submit()">Logout</a>
+                <a href="#" onClick="document.getElementById('form1').submit()" align="center">Logout</a>
                 <form id="form1" action="{{ route('logout') }}" method="POST">
                   @csrf
                 </form>

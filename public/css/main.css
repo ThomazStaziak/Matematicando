@@ -66,3 +66,18 @@
 .fonte-logo {
   font-family: 'DatBox';
 }
+
+.modal {
+  height: 1000px !important;
+  margin: 15px auto;
+}
+
+.modal-footer {
+  position: absolute;
+  bottom: 16px;
+}
+
+.buttons {
+  width: 100% !important;
+  font-size: 12px;
+}

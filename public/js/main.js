@@ -36,11 +36,7 @@ function cronometro(segundos) {
     if (counter >= finalArray) {
       tempoRestante = segundos
       clearInterval(interval)
-    }
-    if (segundos >= 60) {
-      tempoResposta = segundos
-      plugHtml('pontuacao', pontuacao)
-      plugHtml('tempo', '01:00')
+      location='modal'
     }
     if (segundos < 10) {
       tempoResposta = segundos
@@ -85,7 +81,4 @@ input.addEventListener('keypress', (evento) => {
 mostrarPergunta()
 cronometro(time)
 
-// IDEA: Mostrar as respostas erradas
-// IDEA: Quando terminar o tempo mostrar um modal com as seguintes opções:
-// Ir para próxima fase, ver erros, sair e "compartilhar"
 // IDEA: Colocar som para erros e para acertos

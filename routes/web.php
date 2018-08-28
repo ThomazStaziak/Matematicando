@@ -24,3 +24,9 @@ Route::get('/easy', 'ScoresController@easy');
 Route::get('/comoJogar', function(){
   return view('como');
 });
+
+Route::get('/leaderboards', function(){
+  return view('leaderboards');
+});
+
+Route::get('/modal', 'HomeController@modal');
