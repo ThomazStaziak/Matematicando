@@ -81,3 +81,8 @@
   width: 100% !important;
   font-size: 12px;
 }
+
+.calc {
+  width: 150px;
+  margin: 0 auto;
+}
