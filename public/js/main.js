@@ -4,6 +4,9 @@ const input = document.querySelector('#numero')
 const background = document.body
 const finalArray = array.length
 const time = 60
+const audioError = document.getElementById("error-song");
+const audioSucess = document.getElementById("correct-song");
+const teste = document.getElementById("teste");
 let counter = 0
 let tempoResposta = 0
 let tempoRestante = 0
@@ -95,6 +98,7 @@ input.addEventListener('keypress', (evento) => {
         mostrarPergunta()
         plugHtml('pontuacao', pontuacao)
       }, 400)
+      teste.play()
     } else if (resposta ) {
       pontuacao -= 2500
       piscarTela('red')
@@ -102,6 +106,7 @@ input.addEventListener('keypress', (evento) => {
         piscarTela('white')
         plugHtml('pontuacao', pontuacao)
       }, 400)
+      audioError.play()
     }
   }
 })

@@ -47,19 +47,19 @@
 	});
     $(window).on('load',function(){
         $('#demo-modal').modal('open');
-        var error = document.getElementById("error-song");
-        var sucess = document.getElementById("correct-song");
+        const error = document.getElementById("error-song");
+        const sucess = document.getElementById("correct-song");
 
-        var y= sessionStorage.status;
-        var audio = y.split('?');
+        let y = sessionStorage.status;
+        let audio = y.split('?');
         if(audio[1] == 'looser'){
           error.play();
         }else {
           sucess.play();
         }
     });
-    
-    
+
+
     document.getElementById("result").innerHTML = sessionStorage.pontuacao;
     document.getElementById("img-teste").src= sessionStorage.status;
 </script>

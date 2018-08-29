@@ -23,7 +23,15 @@
               </div>
             </div>
           </div>
-
+          <audio id="correct-song">
+             <source src="{{url('audio/sucess-song.mp3')}}" type="audio/mp3">
+          </audio>
+          <audio id="error-song">
+              <source src="{{url('audio/error-song.mp3')}}" type="audio/mp3">
+           </audio>
+           <audio id="teste">
+             <source src="{{ url('audio/teste.mp3') }}" type="audio/mp3">
+           </audio>
           <script type="text/javascript">
             const array = <?php echo json_encode($array) ?>
           </script>
