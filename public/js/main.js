@@ -37,9 +37,8 @@ function statusPontuacao(){
     if( pontuacao <= 20000){
       status = '/img/calculadoraTriste.png?looser';
       audio  = 'looser';
-    }else if (pontuacao <= 30000){
-      status = 'medio';
-    }else if(pontuacao <= 45000) {
+      // status = 'medio';
+    }else if(pontuacao >= 20000) {
       status =  '/img/calculadoraFeliz.png?win';
       audio = 'win'
     }
