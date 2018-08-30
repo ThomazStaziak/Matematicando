@@ -47,7 +47,6 @@ class ScoresController extends Controller
             'resposta' => $aux[2]
           ];
       }
-      $array[] = ['questao' => 'Acabou!'];
       return view('game', ['array' => $array]);
 
     }
