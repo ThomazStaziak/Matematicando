@@ -29,4 +29,4 @@ Route::get('/leaderboards', function(){
   return view('leaderboards');
 });
 
-Route::get('/modal', 'HomeController@modal');
+Route::get('/modal/{nivel}', 'HomeController@modal');

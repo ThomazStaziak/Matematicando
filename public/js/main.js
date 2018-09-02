@@ -38,12 +38,9 @@ function piscarTela(cor) {
 
 function statusPontuacao(){
     if( pontuacao <= 20000){
-      status = '/img/calculadoraTriste.png?looser';
-      audio  = 'looser';
-      // status = 'medio';
+      status  = 'looser';
     }else if(pontuacao >= 20000) {
-      status =  '/img/calculadoraFeliz.png?win';
-      audio = 'win'
+      status = 'winner'
     }
   return status;
 }
@@ -54,13 +51,10 @@ function cronometro(segundos) {
       tempoRestante = segundos
       clearInterval(interval)
       if (typeof(Storage) !== "undefined") {
-        // Code for localStorage/sessionStorage.
         sessionStorage.pontuacao = pontuacao;
         sessionStorage.status = statusPontuacao();
-      } else {
-        // Sorry! No Web Storage support..
     }
-      location='modal'
+      location='modal/' + sessionStorage.status
     }
     if (segundos < 10) {
       tempoResposta = segundos
@@ -74,13 +68,10 @@ function cronometro(segundos) {
     if (segundos <= 0) {
       clearInterval(interval)
       if (typeof(Storage) !== "undefined") {
-        // Code for localStorage/sessionStorage.
         sessionStorage.pontuacao = pontuacao;
         sessionStorage.status = statusPontuacao();
-    } else {
-        // Sorry! No Web Storage support..
     }
-      location='modal'
+      location='modal/' + sessionStorage.status
     }
     segundos--
   }, 1000)

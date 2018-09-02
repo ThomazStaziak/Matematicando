@@ -26,8 +26,15 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function modal()
+    public function modal($nivel)
     {
-      return view('modal');
+      if ($nivel === 'looser') {
+        $foto = 'img/calculadoraTriste.png';
+        $audio = 'audio/error-song.mp3';
+      } else {
+        $foto = 'img/calculadoraFeliz.png';
+        $audio = 'audio/sucess-song.mp3';
+      }
+      return view('modal')->with('foto', $foto)->with('audio', $audio);
     }
 }

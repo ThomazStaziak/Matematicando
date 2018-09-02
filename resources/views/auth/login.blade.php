@@ -4,79 +4,81 @@
 @section('contents')
 <br>
   <div class="row">
-    <div class="collapsible-header">
-      <span class="col s6">Login</span>
-      <span class="col s6">Registrar-se</span>
-    </div>
-    <div class="login col s6"><br>
-      <form class="col s12" method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
-        @csrf
+    <div class="col s10 offset-s1">
+      <div class="topo collapsible-header">
+        <div class="titulos1 col s6 center-align">Login</div>
+        <div class="titulos2 col s6 center-align">Registrar-se</div>
+      </div>
+      <div class="login col s6"><br>
+        <form class="col s12" method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+          @csrf
 
-        <div class="row">
-          <div class="input-field col s6">
-            <i class="material-icons prefix">email</i>
-            <input id="icon_prefix" type="email" name="email" value="{{ old('email') }}" class="validate">
-            <label for="icon_prefix" class="active">Email</label>
-            @if (count($errors) > 0)
-              <span class="helper-text red-text" data-error="wrong" data-success="right">{{ $errors->first('email') }}</span>
-            @endif
-          </div>
-          <div class="input-field col s6">
-            <i class="material-icons prefix">lock</i>
-            <input id="icon_lock" type="password" name="password" value="{{ old('password') }}" class="validate">
-            <label for="icon_lock" class="active">Senha</label>
-          </div>
-          <div class="input-field col s12">
-            <div class="switch col s4 right">
-              <p>
-                <label>
-                  <input type="checkbox" {{ old('remember') ? 'checked' : '' }}>
-                  <span class="lever"></span>
-                </label>
-                <span class="grey-text">Remember Me?</span>
-              </p>
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">email</i>
+              <input id="icon_prefix" type="email" name="email" value="{{ old('email') }}" class="validate">
+              <label for="icon_prefix" class="active">Email</label>
+              @if (count($errors) > 0)
+                <span class="helper-text red-text" data-error="wrong" data-success="right">{{ $errors->first('email') }}</span>
+              @endif
+            </div>
+            <div class="input-field col s6">
+              <i class="material-icons prefix">lock</i>
+              <input id="icon_lock" type="password" name="password" value="{{ old('password') }}" class="validate">
+              <label for="icon_lock" class="active">Senha</label>
+            </div>
+            <div class="input-field col s12">
+              <div class="switch col s5 right">
+                <p>
+                  <label>
+                    <input type="checkbox" {{ old('remember') ? 'checked' : '' }}>
+                    <span class="lever"></span>
+                  </label>
+                  <span class="grey-text">Remember Me?</span>
+                </p>
+              </div>
+            </div>
+            <div class="input-field col s12 right">
+              <button class="btn waves-effect red darken-2" type="submit" name="action">Logar
+                <i class="material-icons right">send</i>
+              </button>
             </div>
           </div>
-          <div class="input-field col s12 right">
-            <button class="btn waves-effect red darken-2" type="submit" name="action">Logar
-              <i class="material-icons right">send</i>
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="register col s6">
-      <form class="col s12" method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
-        @csrf
+        </form>
+      </div>
+      <div class="register col s6">
+        <form class="col s12" method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+          @csrf
 
-        <div class="row"><br>
-          <div class="input-field col s6">
-            <i class="material-icons prefix">account_circle</i>
-            <input id="nome" type="text" class="validate" name="name" value="{{ old('name') }}" required>
-            <label for="nome">Nome</label>
+          <div class="row"><br>
+            <div class="input-field col s6">
+              <i class="material-icons prefix">account_circle</i>
+              <input id="nome" type="text" class="validate" name="name" value="{{ old('name') }}" required>
+              <label for="nome">Nome</label>
+            </div>
+            <div class="input-field col s6">
+              <i class="material-icons prefix">email</i>
+              <input id="email" type="text" class="validate" name="email" value="{{ old('email') }}" required>
+              <label for="email">Email</label>
+            </div>
+            <div class="input-field col s6">
+              <i class="material-icons prefix">lock</i>
+              <input id="senha" type="password" class="validate" name="password" required>
+              <label for="senha">Senha</label>
+            </div>
+            <div class="input-field col s6">
+              <i class="material-icons prefix">lock_open</i>
+              <input id="senha_confirm" type="password" class="validate" name="password_confirmation" required>
+              <label for="senha_confirm">Confirmar Senha</label>
+            </div>
+            <div class="input-field col s12 right">
+              <button class="btn waves-effect red darken-2" type="submit" name="action">Registrar
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
           </div>
-          <div class="input-field col s6">
-            <i class="material-icons prefix">email</i>
-            <input id="email" type="text" class="validate" name="email" value="{{ old('email') }}" required>
-            <label for="email">Email</label>
-          </div>
-          <div class="input-field col s6">
-            <i class="material-icons prefix">lock</i>
-            <input id="senha" type="password" class="validate" name="password" required>
-            <label for="senha">Senha</label>
-          </div>
-          <div class="input-field col s6">
-            <i class="material-icons prefix">lock_open</i>
-            <input id="senha_confirm" type="password" class="validate" name="password_confirmation" required>
-            <label for="senha_confirm">Confirmar Senha</label>
-          </div>
-          <div class="input-field col s12 right">
-            <button class="btn waves-effect red darken-2" type="submit" name="action">Registrar
-              <i class="material-icons right">send</i>
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
   </div>
+</div>
 @endsection
