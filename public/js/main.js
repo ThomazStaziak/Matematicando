@@ -104,5 +104,3 @@ input.addEventListener('keypress', (evento) => {
 
 mostrarPergunta()
 cronometro(time)
-
-// IDEA: Colocar som para erros e para acertos
